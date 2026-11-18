@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor settings
+.idea/
+.vscode/
+
+# Secrets: never commit keys or passwords
+.env
+
+# Users' encrypted note files (written by FileHandler.py)
+Notes/

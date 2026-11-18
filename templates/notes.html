@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian Vault</title>
+    <link rel="stylesheet" href="{{url_for ('static', filename= 'fontawesome/css/all.min.css')}}">
+    <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- https://fonts.google.com/ -->
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{url_for ('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{url_for ('static', filename = 'css/templatemo-xtra-blog.css')}}" rel="stylesheet">
+    <!--
+    
+TemplateMo 553 Xtra Blog
+
+https://templatemo.com/tm-553-xtra-blog
+
+-->
+</head>
+
+<body>
+    <header class="tm-header" id="tm-header">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-site-header1">
+                <div class="mb-3 mx-auto tm-site-logo"><i class="fas fa-times fa-2x"></i></div>
+                <h1 class="text-center">Guardian Vault</h1>
+            </div>
+            <nav class="tm-nav" id="tm-nav">
+                <ul>
+                    <li class="tm-nav-item "><a href="/Home" class="tm-nav-link">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a></li>
+                    <li class="tm-nav-item active">
+                        <a href="/Note" class="tm-nav-link" id="new-note-link">
+                            <i class="fas fa-pen"></i>
+                            New Note
+                        </a>
+                    </li>
+
+                    <li class="tm-nav-item"><a href="/MyNotes" class="tm-nav-link" id="new-mynote-link">
+                        <i class="fas fa-users"></i>
+                        My Notes
+                    </a></li>
+                    <li class="tm-nav-item ">
+                        <a href="/logout" class="tm-nav-link">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="tm-mb-65">
+                <a rel="nofollow" href="https://fb.com/templatemo" class="tm-social-link">
+                    <i class="fab fa-facebook tm-social-icon"></i>
+                </a>
+                <a href="https://twitter.com" class="tm-social-link">
+                    <i class="fab fa-twitter tm-social-icon"></i>
+                </a>
+                <a href="https://instagram.com" class="tm-social-link">
+                    <i class="fab fa-instagram tm-social-icon"></i>
+                </a>
+                <a href="https://linkedin.com" class="tm-social-link">
+                    <i class="fab fa-linkedin tm-social-icon"></i>
+                </a>
+            </div>
+            <p class="tm-mb-80 pr-5 text-white">
+                Guardian Vault by Areesha & Laiba!
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row">
+
+               <!-- Content area -->
+<div class="col-12 col-md-9 tm-col-right">
+    <!-- Your content here -->
+    <div class="row tm-row">
+        <div class="col-12">
+            <!-- Form for note input -->
+            <form class="tm-mb-80" action="/NewNote" method="post" id="noteForm">
+                <div class="form-group">
+                    <label for="noteName">Note Name</label>
+                    <input type="text" class="form-control" id="notesname" name="notesname" placeholder="Enter note name">
+                </div>
+                <textarea class="form-control mt-3" id="noteInput" name="noteInput" rows="10" placeholder="Enter your note here..."></textarea>
+                <div class="d-flex justify-content-end mt-3">
+                    <button style="align-items: center;" type="submit" class="btn btn-primary" id="saveNote">Save</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Your script includes remain unchanged -->
+    <script>
+        // Function to handle the click event for the "New Note" link
+        document.addEventListener('DOMContentLoaded', function () {
+            const newNoteLink = document.querySelector('#new-note-link');
+            if (newNoteLink) {
+                newNoteLink.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    window.location.href = '/Note'; // Redirect to notes.html
+                });
+            }
+
+            // Delete note functionality
+            const deleteNoteBtn = document.getElementById('deleteNote');
+            if (deleteNoteBtn) {
+                deleteNoteBtn.addEventListener('click', function () {
+                    document.getElementById('noteInput').value = ''; // Clear the note textarea
+                    // Additional logic for deleting the note from storage if needed
+                });
+            }
+
+            // Save note functionality (you can customize this to save to your storage method)
+            const saveNoteBtn = document.getElementById('saveNote');
+            if (saveNoteBtn) {
+                saveNoteBtn.addEventListener('click', function () {
+                    const noteContent = document.getElementById('noteInput').value;
+                    // Logic to save the note content goes here
+                    console.log('Note saved:', noteContent);
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const saveNoteButton = document.getElementById('saveNote');
+            const noteForm = document.getElementById('noteForm');
+    
+            saveNoteButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default button behavior
+    
+                // Submit the form
+                noteForm.submit();
+            });
+        });
+    </script>
+</body>
+
+</html>
